@@ -1,36 +1,88 @@
 {
-  "name": "StudyKit - جعبه‌ابزار کنکور",
-  "short_name": "StudyKit",
-  "description": "ابزارهای هوشمند مدیریت مطالعه کنکور",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#F5F0EB",
-  "theme_color": "#F5F0EB",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+    "name": "StudyKit - جعبه‌ابزار کنکور",
+    "short_name": "StudyKit",
+    "description": "ابزارهای هوشمند مدیریت مطالعه و برنامه‌ریزی کنکور ۱۴۰۵",
+    "start_url": "./index.html",
+    "scope": ".",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+    "background_color": "#F5F0EB",
+    "theme_color": "#F5F0EB",
+    "orientation": "portrait",
+    "lang": "fa",
+    "dir": "rtl",
+    "categories": ["education", "productivity"],
+    "iarc_rating_id": "",
+    "prefer_related_applications": false,
+    "launch_handler": {
+        "client_mode": "navigate-existing"
     },
-    {
-      "src": "icons/icon-192-maskable.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512-maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ]
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-192-maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-512-maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "icons/screenshot-wide.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "داشبورد اصلی StudyKit"
+        },
+        {
+            "src": "icons/screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "نمای موبایل StudyKit"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "تخمین تراز قلمچی",
+            "short_name": "تراز",
+            "description": "محاسبه سریع تراز آزمون",
+            "url": "https://mahdikhalili1383.github.io/balance-calc/",
+            "icons": [
+                {
+                    "src": "icons/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "پلنر مطالعه",
+            "short_name": "پلنر",
+            "description": "برنامه‌ریزی هوشمند مطالعه",
+            "url": "https://mahdikhalili1383.github.io/my-planner/",
+            "icons": [
+                {
+                    "src": "icons/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
 }
