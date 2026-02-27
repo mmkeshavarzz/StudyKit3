@@ -85,7 +85,76 @@
                 }
             ]
         }
+    ],
+
+        "id": "/studykit/",
+
+    "handle_links": "preferred",
+
+    "file_handlers": [
+        {
+            "action": "./index.html",
+            "accept": {
+                "application/json": [".json"],
+                "text/csv": [".csv"]
+            }
+        }
+    ],
+
+    "protocol_handlers": [
+        {
+            "protocol": "web+studykit",
+            "url": "./index.html?source=%s"
+        }
+    ],
+
+    "share_target": {
+        "action": "./index.html",
+        "method": "GET",
+        "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url"
+        }
+    },
+
+    "widgets": [
+        {
+            "name": "روزشمار کنکور",
+            "description": "نمایش روزهای باقیمانده تا کنکور ۱۴۰۵",
+            "tag": "countdown",
+            "ms_ac_template": "widget/countdown.json",
+            "screenshots": [
+                {
+                    "src": "./icons/screenshot-mobile.png",
+                    "sizes": "390x844",
+                    "label": "ویجت روزشمار"
+                }
+            ],
+            "icons": [
+                { "src": "icons/icon-192.png", "sizes": "192x192" }
+            ]
+        }
+    ],
+
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+
+    "note_taking": {
+        "new_note_url": "./index.html?mode=note"
+    },
+
+    "tab_strip": {
+        "home_tab": "auto",
+        "new_tab_button": "auto"
+    },
+
+    "scope_extensions": [
+        { "origin": "https://mmkeshavarzz.github.io" }
     ]
+
 }
+
 
 
