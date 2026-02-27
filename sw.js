@@ -186,3 +186,120 @@ self.addEventListener('fetch', (event) => {
             })
     );
 });
+
+/* ──────────────────────────────────────────
+   رویداد Sync — همگام‌سازی پس‌زمینه
+   وقتی اینترنت وصل بشه، داده‌های معلق رو ارسال میکنه
+   ────────────────────────────────────────── */
+self.addEventListener('sync', (event) => {
+    console.log('[StudyKit SW] Background Sync:', event.tag);
+
+    if (event.tag === 'sync-study-data') {
+        event.waitUntil(
+            // داده‌های ذخیره‌شده آفلاین رو سینک کن
+            clients.matchAll().then((allClients) => {
+                allClients.forEach((client) => {
+                    client.postMessage({
+                        type: 'SYNC_COMPLETE',
+                        tag: event.tag
+                    });
+                });
+            })
+        );
+    }
+});
+
+/* ──────────────────────────────────────────
+   رویداد Periodic Sync — سینک دوره‌ای
+   هر چند ساعت یکبار داده‌ها رو آپدیت میکنه
+   ────────────────────────────────────────── */
+self.addEventListener('periodicsync', (event) => {
+    console.log('[StudyKit SW] Periodic Sync:', event.tag);
+
+    if (event.tag === 'update-study-content') {
+        event.waitUntil(
+            caches.open(CACHE_NAME).then((cache) => {
+                // فایل‌های اصلی رو دوباره از سرور بگیر
+                return cache.addAll([
+                    './',
+                    './index.html',
+                    './style.css',
+                    './app.js'
+                ]);
+            }).then(() => {
+                console.log('[StudyKit SW] محتوا آپدیت شد!');
+            }).catch((error) => {
+                console.warn('[StudyKit SW] خطا در سینک دوره‌ای:', error);
+            })
+        );
+    }
+});
+
+/* ──────────────────────────────────────────
+   رویداد Push — دریافت نوتیفیکیشن
+   وقتی سرور پیامی بفرسته، اینجا دریافت میشه
+   ────────────────────────────────────────── */
+self.addEventListener('push', (event) => {
+    console.log('[StudyKit SW] Push دریافت شد!');
+
+    // پیام پیش‌فرض اگه دیتایی نبود
+    let notificationData = {
+        title: '📚 استادی‌کیت',
+        body: 'وقت مطالعه‌ست! بیا درست رو بخون 💪',
+        icon: './icons/icon-192.png',
+        badge: './icons/icon-192.png'
+    };
+
+    // اگه دیتا داشت، جایگزین کن
+    if (event.data) {
+        try {
+            const pushData = event.data.json();
+            notificationData = { ...notificationData, ...pushData };
+        } catch (e) {
+            notificationData.body = event.data.text();
+        }
+    }
+
+    event.waitUntil(
+        self.registration.showNotification(notificationData.title, {
+            body: notificationData.body,
+            icon: notificationData.icon,
+            badge: notificationData.badge,
+            vibrate: [200, 100, 200],
+            tag: 'studykit-notification',
+            renotify: true,
+            data: { url: './' },
+            actions: [
+                { action: 'open', title: '📖 باز کن' },
+                { action: 'close', title: '❌ بعداً' }
+            ]
+        })
+    );
+});
+
+/* ──────────────────────────────────────────
+   رویداد Notification Click — کلیک روی نوتیفیکیشن
+   وقتی کاربر روی نوتیفیکیشن بزنه، سایت باز میشه
+   ────────────────────────────────────────── */
+self.addEventListener('notificationclick', (event) => {
+    console.log('[StudyKit SW] کلیک روی نوتیفیکیشن:', event.action);
+    event.notification.close();
+
+    if (event.action === 'close') return;
+
+    event.waitUntil(
+        clients.matchAll({ type: 'window', includeUncontrolled: true })
+            .then((clientList) => {
+                // اگه تب باز داره، فوکوس کن
+                for (const client of clientList) {
+                    if (client.url.includes('studykit') && 'focus' in client) {
+                        return client.focus();
+                    }
+                }
+                // وگرنه تب جدید باز کن
+                if (clients.openWindow) {
+                    return clients.openWindow(event.notification.data.url || './');
+                }
+            })
+    );
+});
