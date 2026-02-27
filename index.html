@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+    <!-- ═══════════════════════════════════════════════════════════
+         StudyKit — داشبورد مرکزی ابزارهای کنکوری
+         توسعه‌دهنده: محمدمهدی کشاورز
+         نسخه: 1.0.0
+         آخرین بروزرسانی: 1404/12/08
+    ═══════════════════════════════════════════════════════════ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="استادی‌کیت — جعبه‌ابزار هوشمند کنکوری‌ها">
+    <meta name="theme-color" content="#F5F0EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="استادی‌کیت">
+
+    <title>استادی‌کیت | StudyKit</title>
+
+    <!-- ──── PWA Manifest ──── -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- ──── فونت‌ها ──── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- ──── آیکون‌ها (Font Awesome) ──── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- ──── استایل اصلی ──── -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ╔═══════════════════════════════════════════════════╗
+         ║              هدر — لوگو و تنظیمات               ║
+         ╚═══════════════════════════════════════════════════╝ -->
+    <header class="hub-header">
+        <div class="header-content">
+            <!-- لوگو و برند -->
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>استادی‌کیت</h1>
+                    <span class="brand-subtitle">جعبه‌ابزار هوشمند کنکوری‌ها</span>
+                </div>
+            </div>
+
+            <!-- دکمه تم شب/روز -->
+            <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </div>
+                    <div class="toggle-stars">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </div>
+                    <div class="toggle-cloud"></div>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- ╔═══════════════════════════════════════════════════╗
+         ║            بخش اصلی — گرید بنتو                 ║
+         ╚═══════════════════════════════════════════════════╝ -->
+    <main class="bento-container">
+
+        <!-- ──── کارت خوش‌آمدگویی (بزرگ) ──── -->
+        <section class="bento-card welcome-card" id="welcomeCard">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h2>سلام رفیق کنکوری! 👋</h2>
+                    <p>ابزارهات آماده‌ان. امروز چند ساعت میخوای بترکونی؟ 🔥</p>
+                </div>
+                <div class="welcome-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="activeTools">3</span>
+                        <span class="stat-label">ابزار فعال</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="comingSoonCount">3</span>
+                        <span class="stat-label">به زودی</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="currentDate">--</span>
+                        <span class="stat-label">روز تا کنکور</span>
+                    </div>
+                </div>
+            </div>
+            <div class="welcome-decoration">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </section>
+
+        <!-- ═══════════ ابزارهای فعال ═══════════ -->
+
+        <!-- ──── کارت ۱: تخمین تراز قلمچی ──── -->
+        <a href="https://mmkeshavarzz.github.io/balance-calc-v9.0/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="bento-card tool-card active-tool" 
+           id="balanceCalc">
+            <div class="card-glow"></div>
+            <div class="card-icon" style="--accent: #A8D8EA;">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="card-body">
+                <h3>تخمین تراز قلمچی</h3>
+                <p>محاسبه خودکار تراز بر اساس درصد دروس تجربی</p>
+            </div>
+            <div class="card-badge active-badge">
+                <i class="fas fa-check-circle"></i>
+                فعال
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+        </a>
+
+        <!-- ──── کارت ۲: پلنر مطالعه ──── -->
+        <a href="https://mmkeshavarzz.github.io/my-planner/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="bento-card tool-card active-tool" 
+           id="myPlanner">
+            <div class="card-glow"></div>
+            <div class="card-icon" style="--accent: #FFD3B6;">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="card-body">
+                <h3>پلنر مطالعه</h3>
+                <p>دفتر گزارش کار روزانه و برنامه‌ریزی هوشمند</p>
+            </div>
+            <div class="card-badge active-badge">
+                <i class="fas fa-check-circle"></i>
+                فعال
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+        </a>
+
+        <!-- ──── کارت ۳: داشبورد پیشرفت ──── -->
+        <a href="https://mmkeshavarzz.github.io/progress-dashboard/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="bento-card tool-card active-tool" 
+           id="progressDash">
+            <div class="card-glow"></div>
+            <div class="card-icon" style="--accent: #C3FBD8;">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-body">
+                <h3>داشبورد پیشرفت</h3>
+                <p>ثبت و نمایش درصد پیشروی دروس تا آزمون بعدی</p>
+            </div>
+            <div class="card-badge active-badge">
+                <i class="fas fa-check-circle"></i>
+                فعال
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+        </a>
+
+        <!-- ═══════════ ابزارهای «به زودی» ═══════════ -->
+
+        <!-- ──── کارت ۴: تحلیل نقاط ضعف و قوت ──── -->
+        <div class="bento-card tool-card coming-soon-tool" 
+             id="weaknessAnalysis"
+             onclick="showComingSoon()">
+            <div class="card-lock">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="card-icon" style="--accent: #E8D5F5;">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="card-body">
+                <h3>تحلیل نقاط ضعف و قوت</h3>
+                <p>شناسایی دقیق نقاط ضعف بر اساس نمرات وارد شده</p>
+            </div>
+            <div class="card-badge coming-badge">
+                <i class="fas fa-clock"></i>
+                به زودی
+            </div>
+            <div class="coming-overlay">
+                <div class="pulse-ring"></div>
+            </div>
+        </div>
+
+        <!-- ──── کارت ۵: پیش‌بینی رتبه و رشته ──── -->
+        <div class="bento-card tool-card coming-soon-tool" 
+             id="rankPredict"
+             onclick="showComingSoon()">
+            <div class="card-lock">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="card-icon" style="--accent: #FFE0E6;">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="card-body">
+                <h3>پیش‌بینی رتبه و رشته</h3>
+                <p>تخمین رتبه و پیشنهاد رشته بر اساس تراز نهایی</p>
+            </div>
+            <div class="card-badge coming-badge">
+                <i class="fas fa-clock"></i>
+                به زودی
+            </div>
+            <div class="coming-overlay">
+                <div class="pulse-ring"></div>
+            </div>
+        </div>
+
+        <!-- ──── کارت ۶: پیشنهاد هوشمند مطالعه ──── -->
+        <div class="bento-card tool-card coming-soon-tool" 
+             id="smartSuggest"
+             onclick="showComingSoon()">
+            <div class="card-lock">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="card-icon" style="--accent: #FFF5BA;">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="card-body">
+                <h3>پیشنهاد هوشمند مطالعه</h3>
+                <p>پیش‌بینی بهبود عملکرد با توجه به ساعت مطالعه</p>
+            </div>
+            <div class="card-badge coming-badge">
+                <i class="fas fa-clock"></i>
+                به زودی
+            </div>
+            <div class="coming-overlay">
+                <div class="pulse-ring"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ╔═══════════════════════════════════════════════════╗
+         ║         فوتر — شبکه‌های اجتماعی بنتو           ║
+         ╚═══════════════════════════════════════════════════╝ -->
+    <footer class="hub-footer">
+        <div class="social-bento">
+            <!-- اینستاگرام -->
+            <a href="https://instagram.com/mm.keshavarzz" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="social-card social-instagram"
+               aria-label="اینستاگرام">
+                <i class="fab fa-instagram"></i>
+                <span class="social-label">Instagram</span>
+                <span class="social-handle">@mm.keshavarzz</span>
+            </a>
+
+            <!-- تلگرام -->
+            <a href="https://t.me/ke_mim_mim" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="social-card social-telegram"
+               aria-label="تلگرام">
+                <i class="fab fa-telegram-plane"></i>
+                <span class="social-label">Telegram</span>
+                <span class="social-handle">@ke_mim_mim</span>
+            </a>
+
+            <!-- ایکس / توییتر -->
+            <a href="https://x.com/s_keshavarz" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="social-card social-x"
+               aria-label="ایکس">
+                <i class="fab fa-x-twitter"></i>
+                <span class="social-label">X</span>
+                <span class="social-handle">@s_keshavarz</span>
+            </a>
+        </div>
+
+        <div class="footer-credit">
+            <p>ساخته شده با <i class="fas fa-heart" style="color: #ff6b6b;"></i> توسط محمدمهدی کشاورز</p>
+            <p class="version">نسخه 1.0.0 — اسفند ۱۴۰۴</p>
+        </div>
+    </footer>
+
+    <!-- ──── Toast Notification ──── -->
+    <div class="toast-container" id="toastContainer">
+        <div class="toast" id="toast">
+            <div class="toast-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="toast-body">
+                <strong>صبر داشته باش! ⏳</strong>
+                <p>بچه‌ها دارن روش کار میکنن</p>
+            </div>
+            <button class="toast-close" onclick="hideToast()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ──── نصب PWA Banner ──── -->
+    <div class="pwa-install-banner" id="pwaInstallBanner">
+        <div class="pwa-banner-content">
+            <div class="pwa-banner-icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="pwa-banner-text">
+                <strong>نصب استادی‌کیت</strong>
+                <p>به صفحه اصلی گوشیت اضافه کن!</p>
+            </div>
+            <button class="pwa-install-btn" id="pwaInstallBtn">نصب</button>
+            <button class="pwa-dismiss-btn" id="pwaDismissBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ──── خروجی PNG ──── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- ──── اسکریپت اصلی ──── -->
+    <script src="app.js"></script>
+</body>
+</html>
